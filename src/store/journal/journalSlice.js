@@ -12,7 +12,7 @@ export const journalSlice = createSlice({
     //   title: '',
     //   body: '',
     //   date: 54342312,
-    //   imgUrls: []
+    //   imageUrls: []
     // }
   },
   reducers: {
@@ -43,6 +43,10 @@ export const journalSlice = createSlice({
       state.messageSaved = `${action.payload.title}, updated successfuly`;
 
     },
+    setPhotosToActiveNote: (state, action) => {
+      state.active.imageUrls = [...state.active.imageUrls, ...action.payload];
+      state.isSaving = false;
+    },
     deleteNoteById: (state, action) => {
 
     }
@@ -57,5 +61,6 @@ export const {
   setNotes,
   setSaving,
   noteUpdated,
+  setPhotosToActiveNote,
   deleteNoteById
 } = journalSlice.actions;
